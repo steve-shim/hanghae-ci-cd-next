@@ -9,15 +9,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 - GitHub Actions과 CI/CD 도구
 
----
-
 1. GitHub Actions는 CI/CD 도구의 한 종류입니다.
 2. 코드 저장소와 긴밀하게 통합되어 있어 개발 워크플로우를 더욱 효율적으로 만듭니다.
 3. 빌드, 테스트, 배포 등 전체 CI/CD 파이프라인을 GitHub 내에서 구성하고 실행할 수 있습니다.
 
-- S3와 스토리지
-
 ---
+
+- S3와 스토리지
 
 1. 확장성:
    - S3: 거의 무제한의 확장성을 제공합니다. 데이터 양에 제한이 없습니다.
@@ -46,9 +44,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 이러한 차이점들로 인해 S3는 클라우드 기반 애플리케이션, 웹 호스팅, 백업 및 아카이브 등에 적합한 반면, 일반 스토리지는 로컬 파일 시스템이나 빠른 접근이 필요한 경우에 더 적합할 수 있습니다.
 
-- CloudFront와 CDN
-
 ---
+
+- CloudFront와 CDN
 
 CloudFront와 CDN은 밀접하게 관련되어 있습니다. 이해를 돕기 위해 각각을 설명하고 관계를 설명하겠습니다.
 
@@ -80,9 +78,9 @@ CloudFront의 주요 특징:
 
 CDN과 CloudFront를 사용하면 웹사이트나 애플리케이션의 성능을 크게 향상시킬 수 있으며, 특히 글로벌 사용자 기반을 가진 서비스에 매우 유용합니다.
 
-- 캐시 무효화(Cache Invalidation):
-
 ---
+
+- 캐시 무효화(Cache Invalidation):
 
 CloudFront 캐시 무효화가 필요한 주요 이유는 다음과 같습니다:
 
@@ -102,6 +100,8 @@ CloudFront 캐시 무효화가 필요한 주요 이유는 다음과 같습니다
    - 새로운 기능을 테스트하거나 점진적으로 출시할 때, 캐시 무효화를 통해 정확한 타이밍 제어가 가능합니다.
 
 캐시 무효화는 CDN의 장점인 빠른 콘텐츠 전달을 유지하면서도, 콘텐츠의 최신성을 보장하는 중요한 메커니즘입니다. 특히 정적 웹사이트 호스팅에서는 배포 프로세스의 필수적인 부분으로 간주됩니다.
+
+---
 
 - Repository secret과 환경변수
 
