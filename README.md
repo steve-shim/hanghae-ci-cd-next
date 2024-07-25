@@ -1,36 +1,110 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## 주요 링크
 
-First, run the development server:
+- S3 버킷 웹사이트 엔드포인트: [http://awsbuckettest496.s3-website-ap-southeast-2.amazonaws.com](http://awsbuckettest496.s3-website-ap-southeast-2.amazonaws.com/)
+- CloudFrount 배포 도메인 이름: https://dkbml1qtmyd99.cloudfront.net/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 주요 개념
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- GitHub Actions과 CI/CD 도구
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. GitHub Actions는 CI/CD 도구의 한 종류입니다.
+2. 코드 저장소와 긴밀하게 통합되어 있어 개발 워크플로우를 더욱 효율적으로 만듭니다.
+3. 빌드, 테스트, 배포 등 전체 CI/CD 파이프라인을 GitHub 내에서 구성하고 실행할 수 있습니다.
 
-## Learn More
+- S3와 스토리지
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. 확장성:
+   - S3: 거의 무제한의 확장성을 제공합니다. 데이터 양에 제한이 없습니다.
+   - 일반 스토리지: 물리적 한계가 있으며, 확장을 위해 추가 하드웨어가 필요할 수 있습니다.
+2. 가용성과 내구성:
+   - S3: 99.99% 가용성과 99.999999999% 내구성을 제공합니다.
+   - 일반 스토리지: 하드웨어 고장에 더 취약할 수 있으며, 가용성과 내구성이 더 낮을 수 있습니다.
+3. 접근성:
+   - S3: 인터넷을 통해 전 세계 어디서나 접근 가능합니다.
+   - 일반 스토리지: 주로 로컬 네트워크나 특정 위치에서만 접근 가능합니다.
+4. 비용 모델:
+   - S3: 사용한 만큼만 지불하는 종량제 모델입니다.
+   - 일반 스토리지: 대개 초기 투자 비용이 높고, 유지 보수 비용이 발생합니다.
+5. 관리:
+   - S3: AWS가 관리하므로 사용자는 인프라 관리에 신경 쓸 필요가 없습니다.
+   - 일반 스토리지: 사용자가 직접 관리해야 합니다.
+6. 데이터 관리 기능:
+   - S3: 버전 관리, 라이프사이클 정책, 암호화 등 다양한 기능을 제공합니다.
+   - 일반 스토리지: 이러한 기능들은 별도의 소프트웨어나 구성이 필요할 수 있습니다.
+7. 통합성:
+   - S3: 다른 AWS 서비스들과 쉽게 통합됩니다.
+   - 일반 스토리지: 다른 서비스와의 통합에 추가적인 작업이 필요할 수 있습니다.
+8. 성능:
+   - S3: 대용량 데이터 저장에 최적화되어 있지만, 로컬 스토리지보다 지연 시간이 길 수 있습니다.
+   - 일반 스토리지: 로컬 접근 시 더 빠른 성능을 제공할 수 있습니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+이러한 차이점들로 인해 S3는 클라우드 기반 애플리케이션, 웹 호스팅, 백업 및 아카이브 등에 적합한 반면, 일반 스토리지는 로컬 파일 시스템이나 빠른 접근이 필요한 경우에 더 적합할 수 있습니다.
 
-## Deploy on Vercel
+- CloudFront와 CDN
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+CloudFront와 CDN은 밀접하게 관련되어 있습니다. 이해를 돕기 위해 각각을 설명하고 관계를 설명하겠습니다.
+
+1. CDN (Content Delivery Network):
+   - CDN은 지리적으로 분산된 서버 네트워크입니다.
+   - 주요 목적은 사용자에게 더 빠르고 안정적으로 콘텐츠를 전달하는 것입니다.
+   - 원본 서버에서 콘텐츠를 캐시하여 사용자와 가까운 엣지 로케이션에서 제공합니다.
+   - 웹사이트 로딩 속도 향상, 대역폭 비용 절감, 서버 부하 감소 등의 이점이 있습니다.
+2. CloudFront:
+   - CloudFront는 Amazon Web Services (AWS)에서 제공하는 CDN 서비스입니다.
+   - 즉, CloudFront는 CDN의 한 종류입니다.
+   - 전 세계에 분산된 엣지 로케이션을 통해 콘텐츠를 전달합니다.
+   - S3, EC2, Elastic Load Balancing 또는 다른 원본 서버와 쉽게 통합됩니다.
+   - 정적 및 동적 콘텐츠, 스트리밍 비디오 등을 제공할 수 있습니다.
+
+CloudFront와 CDN의 관계:
+
+- CloudFront는 CDN의 구체적인 구현체입니다.
+- 모든 CloudFront는 CDN이지만, 모든 CDN이 CloudFront는 아닙니다.
+- 다른 CDN 서비스로는 Akamai, Cloudflare, Fastly 등이 있습니다.
+
+CloudFront의 주요 특징:
+
+1. AWS 서비스와의 긴밀한 통합
+2. 글로벌 엣지 네트워크
+3. 보안 기능 (HTTPS, 지리적 제한 등)
+4. 실시간 로그 및 모니터링
+5. 프로그래밍 가능한 엣지 컴퓨팅 (Lambda@Edge)
+
+CDN과 CloudFront를 사용하면 웹사이트나 애플리케이션의 성능을 크게 향상시킬 수 있으며, 특히 글로벌 사용자 기반을 가진 서비스에 매우 유용합니다.
+
+- 캐시 무효화(Cache Invalidation):
+
+---
+
+CloudFront 캐시 무효화가 필요한 주요 이유는 다음과 같습니다:
+
+1. 콘텐츠 최신성 보장:
+   - S3에 새로운 버전의 웹사이트를 배포했을 때, CloudFront는 기존에 캐시된 버전을 계속 제공할 수 있습니다.
+   - 캐시 무효화를 통해 CloudFront가 즉시 새로운 버전의 콘텐츠를 제공하도록 강제할 수 있습니다.
+2. 사용자 경험 개선:
+   - 사용자들이 항상 최신 버전의 웹사이트를 볼 수 있게 합니다.
+   - 오래된 콘텐츠나 버그가 수정된 이전 버전을 보는 것을 방지합니다.
+3. 즉각적인 업데이트 반영:
+   - 중요한 변경사항이나 긴급 수정사항이 있을 때, 이를 즉시 반영할 수 있습니다.
+4. CDN 동작 최적화:
+   - CloudFront의 기본 TTL(Time To Live) 설정을 길게 유지하면서도, 필요할 때 즉시 콘텐츠를 갱신할 수 있습니다.
+5. 버그 수정 및 보안 업데이트:
+   - 중요한 버그 수정이나 보안 업데이트가 있을 때, 이를 신속하게 모든 사용자에게 전달할 수 있습니다.
+6. A/B 테스팅 및 점진적 롤아웃:
+   - 새로운 기능을 테스트하거나 점진적으로 출시할 때, 캐시 무효화를 통해 정확한 타이밍 제어가 가능합니다.
+
+캐시 무효화는 CDN의 장점인 빠른 콘텐츠 전달을 유지하면서도, 콘텐츠의 최신성을 보장하는 중요한 메커니즘입니다. 특히 정적 웹사이트 호스팅에서는 배포 프로세스의 필수적인 부분으로 간주됩니다.
+
+- Repository secret과 환경변수
+
+1. 보안: Repository secret은 암호화되어 안전하게 저장되지만, 일반 환경 변수는 그렇지 않습니다.
+2. 가시성: Secret은 한 번 설정하면 값을 볼 수 없지만, 환경 변수는 일반적으로 쉽게 볼 수 있습니다.
+3. 사용 범위: Secret은 주로 GitHub Actions 내에서 사용되고, 환경 변수는 더 넓은 범위에서 사용됩니다.
